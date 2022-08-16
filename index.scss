@@ -1,0 +1,309 @@
+@import 'reset';
+
+$color_white: #f3f3f3;
+
+$color_yellow: #FFD633;
+
+$color_black: #333;
+
+$color_blue_start: #19283D;
+
+$color_blue_end: #1D678F;
+
+$color_rain: #4DACFF;
+
+$color_white_cloud: #f2f9fe;
+
+$color_grey_cloud: #ccc;
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color_black;
+
+    .daybox {
+        background: $color_white;
+        line-height: 1.5;
+        width: 100%;
+        max-width: 420px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba($color_black, 0.3);
+        cursor: pointer;
+
+        &:hover {
+            .bottom {
+                height: 100px;
+                .dayWeather{
+                    opacity: 1;
+                }
+            }
+        }
+
+        .switchbg{
+            display: none;
+        }
+      
+        .switchbg:checked + .top {
+            .moon,.cloud {
+                opacity: 0.2;
+            }
+            .tem{
+                circle,polyline,text{
+                    opacity: 1;
+                }
+                text{
+                    transition-delay: 0.5s;
+                }
+            }
+        }
+
+        .top {
+            position: relative;
+            height: 330px;
+            background: linear-gradient($color_blue_start, $color_blue_end);
+            background-size: 100% 300%;
+            animation: daylight 15s infinite linear;
+            border-radius: 5px 5px 0 0;
+
+            @keyframes daylight {
+                0% {
+                    background-position: 100% 30%;
+                }
+
+                50% {
+                    background-position: 100% 100%;
+                }
+
+                100% {
+                    background-position: 100% 30%;
+                }
+            }
+
+            .tem {
+                width: 100%;
+                circle,polyline,text{
+                    transition: 1s;
+                }
+                circle {
+                    fill: $color_white;
+                    opacity: 0.2;
+                }
+
+                polyline {
+                    stroke: $color_white;
+                    fill: none;
+                    stroke-width: 1px;
+                    opacity: 0.2;
+                }
+
+                text {
+                    fill: $color_white;
+                    font-size: 12px;
+                    transform: translate(-10px, 30px);
+                    opacity: 0;
+                    
+                }
+            }
+
+            .moon {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                box-shadow: 15px -15px $color_yellow;
+                left: 50px;
+                top: 100px;
+                transition: 1s;
+                animation: moonMove 30s infinite linear;
+
+                @keyframes moonMove {
+                    0% {
+                        box-shadow: 15px -15px $color_yellow;
+                        transform: translate(-15px, 15px);
+                    }
+
+                    50% {
+                        box-shadow: -30px 30px $color_yellow;
+                        transform: translate(30px, -30px);
+
+                    }
+
+                    100% {
+                        box-shadow: 15px -15px $color_yellow;
+                        transform: translate(-15px, 15px);
+
+                    }
+                }
+            }
+        }
+
+        .cloud {
+            background: $color_white;
+            position: absolute;
+            left: 250px;
+            bottom: 60px;
+            width: 100px;
+            height: 36px;
+            border-radius: 20px;
+            transition: 1s;
+            box-shadow: 0 0 20px rgba($color_black, 0.5);
+            animation: cloudMove 4s infinite linear;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                background: $color_white;
+            }
+
+            &::before {
+                left: 16px;
+                top: -28px;
+            }
+
+            &::after {
+                left: 36px;
+                top: -20px;
+            }
+
+            @keyframes cloudMove {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(5px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            left: 45px;
+            bottom: 15px;
+            background: $color_white;
+            animation: raindrop 1s infinite linear;
+
+            @keyframes raindrop {
+                0% {
+                    transform: translateY(0px);
+                }
+
+                100% {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+            }
+        }
+
+        .rain2 {
+            left: 70px;
+            bottom: 20px;
+            animation-delay: -0.4s;
+        }
+
+        .rain3 {
+            left: 25px;
+            bottom: 20px;
+            animation-delay: -0.6s;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: space-evenly;
+            height: 10px;
+            border-radius: 0 0 5px 5px;
+            transition: 2s;
+            box-shadow: 0 0 20px rgba($color_black, 0.5);
+
+            .dayWeather {
+                margin-top: 20px;
+                text-align: center;
+                width: calc(100% / 7 - 5px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                opacity: 0;
+                top: 20px;
+                transition: 0.5s;
+                &:nth-child(1){
+                    transition-delay: 0.2s;
+                }
+                &:nth-child(2){
+                    transition-delay: 0.4s;
+                }
+                &:nth-child(3){
+                    transition-delay: 0.6s;
+                }
+                &:nth-child(4){
+                    transition-delay: 0.8s;
+                }
+                &:nth-child(5){
+                    transition-delay: 1s;
+                }
+                &:nth-child(6){
+                    transition-delay: 1.2s;
+                }
+                &:nth-child(7){
+                    transition-delay: 1.4s;
+                }
+
+                h3 {
+                    font-size: 8px;
+                    color: $color_black;
+                    letter-spacing: 2px;
+                }
+
+                svg {
+                    max-width: 40px;
+                    height: 40px;
+
+                    .sun {
+                        fill: $color_yellow;
+                        stroke: rgba($color_yellow, 0.3);
+                        stroke-width: 30px;
+                        stroke-dasharray: 5px;
+                    }
+
+                    .cloud {
+                        fill: $color_grey_cloud;
+                    }
+
+                    line {
+                        stroke: $color_rain;
+                    }
+                }
+            }
+        }
+
+        .text_area {
+            color: $color_white;
+            display: inline-block;
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+
+            .temperature {
+                font-size: 75px;
+                line-height: 80px;
+            }
+
+            .infos {
+                font-size: 14px;
+                opacity: 0.5;
+            }
+        }
+    }
+}

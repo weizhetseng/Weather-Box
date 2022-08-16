@@ -1,0 +1,459 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #333;
+}
+
+body .daybox {
+  background: #f3f3f3;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 20px rgba(51, 51, 51, 0.3);
+          box-shadow: 0 0 20px rgba(51, 51, 51, 0.3);
+  cursor: pointer;
+}
+
+body .daybox:hover .bottom {
+  height: 100px;
+}
+
+body .daybox:hover .bottom .dayWeather {
+  opacity: 1;
+}
+
+body .daybox .switchbg {
+  display: none;
+}
+
+body .daybox .switchbg:checked + .top .moon, body .daybox .switchbg:checked + .top .cloud {
+  opacity: 0.2;
+}
+
+body .daybox .switchbg:checked + .top .tem circle, body .daybox .switchbg:checked + .top .tem polyline, body .daybox .switchbg:checked + .top .tem text {
+  opacity: 1;
+}
+
+body .daybox .switchbg:checked + .top .tem text {
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+body .daybox .top {
+  position: relative;
+  height: 330px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#19283D), to(#1D678F));
+  background: linear-gradient(#19283D, #1D678F);
+  background-size: 100% 300%;
+  -webkit-animation: daylight 15s infinite linear;
+          animation: daylight 15s infinite linear;
+  border-radius: 5px 5px 0 0;
+}
+
+@-webkit-keyframes daylight {
+  0% {
+    background-position: 100% 30%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 100% 30%;
+  }
+}
+
+@keyframes daylight {
+  0% {
+    background-position: 100% 30%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 100% 30%;
+  }
+}
+
+body .daybox .top .tem {
+  width: 100%;
+}
+
+body .daybox .top .tem circle, body .daybox .top .tem polyline, body .daybox .top .tem text {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+body .daybox .top .tem circle {
+  fill: #f3f3f3;
+  opacity: 0.2;
+}
+
+body .daybox .top .tem polyline {
+  stroke: #f3f3f3;
+  fill: none;
+  stroke-width: 1px;
+  opacity: 0.2;
+}
+
+body .daybox .top .tem text {
+  fill: #f3f3f3;
+  font-size: 12px;
+  -webkit-transform: translate(-10px, 30px);
+          transform: translate(-10px, 30px);
+  opacity: 0;
+}
+
+body .daybox .top .moon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  -webkit-box-shadow: 15px -15px #FFD633;
+          box-shadow: 15px -15px #FFD633;
+  left: 50px;
+  top: 100px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-animation: moonMove 30s infinite linear;
+          animation: moonMove 30s infinite linear;
+}
+
+@-webkit-keyframes moonMove {
+  0% {
+    -webkit-box-shadow: 15px -15px #FFD633;
+            box-shadow: 15px -15px #FFD633;
+    -webkit-transform: translate(-15px, 15px);
+            transform: translate(-15px, 15px);
+  }
+  50% {
+    -webkit-box-shadow: -30px 30px #FFD633;
+            box-shadow: -30px 30px #FFD633;
+    -webkit-transform: translate(30px, -30px);
+            transform: translate(30px, -30px);
+  }
+  100% {
+    -webkit-box-shadow: 15px -15px #FFD633;
+            box-shadow: 15px -15px #FFD633;
+    -webkit-transform: translate(-15px, 15px);
+            transform: translate(-15px, 15px);
+  }
+}
+
+@keyframes moonMove {
+  0% {
+    -webkit-box-shadow: 15px -15px #FFD633;
+            box-shadow: 15px -15px #FFD633;
+    -webkit-transform: translate(-15px, 15px);
+            transform: translate(-15px, 15px);
+  }
+  50% {
+    -webkit-box-shadow: -30px 30px #FFD633;
+            box-shadow: -30px 30px #FFD633;
+    -webkit-transform: translate(30px, -30px);
+            transform: translate(30px, -30px);
+  }
+  100% {
+    -webkit-box-shadow: 15px -15px #FFD633;
+            box-shadow: 15px -15px #FFD633;
+    -webkit-transform: translate(-15px, 15px);
+            transform: translate(-15px, 15px);
+  }
+}
+
+body .daybox .cloud {
+  background: #f3f3f3;
+  position: absolute;
+  left: 250px;
+  bottom: 60px;
+  width: 100px;
+  height: 36px;
+  border-radius: 20px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+          box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+  -webkit-animation: cloudMove 4s infinite linear;
+          animation: cloudMove 4s infinite linear;
+}
+
+body .daybox .cloud::before, body .daybox .cloud::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #f3f3f3;
+}
+
+body .daybox .cloud::before {
+  left: 16px;
+  top: -28px;
+}
+
+body .daybox .cloud::after {
+  left: 36px;
+  top: -20px;
+}
+
+@-webkit-keyframes cloudMove {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes cloudMove {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+body .daybox .rain {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  left: 45px;
+  bottom: 15px;
+  background: #f3f3f3;
+  -webkit-animation: raindrop 1s infinite linear;
+          animation: raindrop 1s infinite linear;
+}
+
+@-webkit-keyframes raindrop {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes raindrop {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+}
+
+body .daybox .rain2 {
+  left: 70px;
+  bottom: 20px;
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+
+body .daybox .rain3 {
+  left: 25px;
+  bottom: 20px;
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+body .daybox .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 10px;
+  border-radius: 0 0 5px 5px;
+  -webkit-transition: 2s;
+  transition: 2s;
+  -webkit-box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+          box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+}
+
+body .daybox .bottom .dayWeather {
+  margin-top: 20px;
+  text-align: center;
+  width: calc(100% / 7 - 5px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  top: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(1) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(2) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(3) {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(4) {
+  -webkit-transition-delay: 0.8s;
+          transition-delay: 0.8s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(5) {
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(6) {
+  -webkit-transition-delay: 1.2s;
+          transition-delay: 1.2s;
+}
+
+body .daybox .bottom .dayWeather:nth-child(7) {
+  -webkit-transition-delay: 1.4s;
+          transition-delay: 1.4s;
+}
+
+body .daybox .bottom .dayWeather h3 {
+  font-size: 8px;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+body .daybox .bottom .dayWeather svg {
+  max-width: 40px;
+  height: 40px;
+}
+
+body .daybox .bottom .dayWeather svg .sun {
+  fill: #FFD633;
+  stroke: rgba(255, 214, 51, 0.3);
+  stroke-width: 30px;
+  stroke-dasharray: 5px;
+}
+
+body .daybox .bottom .dayWeather svg .cloud {
+  fill: #ccc;
+}
+
+body .daybox .bottom .dayWeather svg line {
+  stroke: #4DACFF;
+}
+
+body .daybox .text_area {
+  color: #f3f3f3;
+  display: inline-block;
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+}
+
+body .daybox .text_area .temperature {
+  font-size: 75px;
+  line-height: 80px;
+}
+
+body .daybox .text_area .infos {
+  font-size: 14px;
+  opacity: 0.5;
+}
+/*# sourceMappingURL=index.css.map */
